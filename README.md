@@ -5,7 +5,10 @@ Fast accurate particle tracking even for large particle displacements
 % from a list of particle coordinates determined at discrete times (e.g.
 % consecutive video frames). This tracker has been designed to be
 % interchangeable with the function, track.m, by John Crocker that is widely
-% used for particle tracking. Benefits of this new code are:
+% used for particle tracking. It works when you have many particles visible
+% at every timepoint. It is not suitable for tracking a few individual
+% particles.
+% Benefits of this new code are:
 %   - it is typically much faster (it includes a waitbar, so you can 
 %     estimate how long you need to wait).
 %   - It can work with very large displacements (much larger than the
