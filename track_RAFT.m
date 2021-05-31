@@ -34,7 +34,7 @@ function trks = track_RAFT(xyzt,maxdisp,varargin)
 % [3] Testa et al. 2021 (https://www.biorxiv.org/content/10.1101/2021.05.16.444336v1.abstract)
 %
 % I hope you find this useful. If you use this code, please do cite the
-% doi reference to the github page
+% doi reference DOI: 10.5281/zenodo.4884065
 % It helps us to keep doing science.
 % Any feedback/bug reports etc would be very welcome. I will post up to
 % date versions on the arxiv and on the Matlab file exchange
