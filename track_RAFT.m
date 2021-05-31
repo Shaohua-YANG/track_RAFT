@@ -4,7 +4,10 @@ function trks = track_RAFT(xyzt,maxdisp,varargin)
 % from a list of particle coordinates determined at discrete times (e.g.
 % consecutive video frames). This tracker has been designed to be
 % interchangeable with the function, track.m, by John Crocker that is widely
-% used for particle tracking. Benefits of this new code are:
+% used for particle tracking. It works when you have many particles visible
+% at every timepoint. It is not suitable for tracking a few individual
+% particles.
+% Benefits of this new code are:
 %   - it is typically much faster (it includes a waitbar, so you can 
 %     estimate how long you need to wait).
 %   - It can work with very large displacements (much larger than the
@@ -43,6 +46,8 @@ function trks = track_RAFT(xyzt,maxdisp,varargin)
 % Inputs: xyzt: an array with the last column being the time (must be
 % discrete... i.e. 1 2 3 4, not real times (i.e. 0.1 0.2 0.3). The first
 % dim columns should be the particle points.
+% Note - there must be at least n_consider + 1 particles at each time
+% point, or the code will creash.
 
 % maxdisp: an estimate of the maximum displacement that a particle will
 % possible take between frames
