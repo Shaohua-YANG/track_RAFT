@@ -34,7 +34,7 @@ function trks = track_RAFT(xyzt,maxdisp,varargin)
 % [3] Testa et al. 2021 (https://www.biorxiv.org/content/10.1101/2021.05.16.444336v1.abstract)
 %
 % I hope you find this useful. If you use this code, please do cite the
-% doi reference DOI: 10.5281/zenodo.4884065
+% doi reference: DOI: 10.5281/zenodo.4884065
 % It helps us to keep doing science.
 % Any feedback/bug reports etc would be very welcome. I will post up to
 % date versions on the arxiv and on the Matlab file exchange
@@ -197,14 +197,17 @@ if length(res)>1
             no_cols=size(id_tot,2);
             id_tot=[id_tot,zeros(no_rows,1)];
             % Add the indices that match up to the previous time point
+            %holdi=[];
             for i=1:no_rows
                 if sum(res(k).idx(:,1)==id_tot(i,no_cols))==1
                     id_tot(i,no_cols+1)=res(k).idx(res(k).idx(:,1)==id_tot(i,no_cols),2);
                     res(k).idx(res(k).idx(:,1)==id_tot(i,no_cols),:)=[];
-                elseif sum(id_tot(i,:)~=0)<min_track_length
-                    id_tot(i,:)=[]; % delete rows that have too short tracks to save space
+                %elseif sum(id_tot(i,:)~=0)<min_track_length
+                    %holdi=[holdi i];
+                    %id_tot(i,:)=[]; % delete rows that have too short tracks to save space
                 end
             end
+            %id_tot(holdi,:)=[];
         % Now add remaining indices below the index list
         sz_res=size(res(k).idx);
         id_tot=[id_tot ; zeros(sz_res(1),no_cols-1) res(k).idx];
@@ -220,6 +223,13 @@ if length(res)>1
         waitbar(k/(length(res)+1),f,'% of the way through aligning indices (step 2/2)'); 
     end
 end
+
+% no_rows=size(id_tot,1);
+% for i=1:no_rows
+%     foo(i)=sum(id_tot(i,:)~=0);
+% end
+% id_tot(foo<min_track_length,:)=[];
+
 
 % Throw away too short tracks
 [rowIdcs, ~] = find(id_tot~=0);

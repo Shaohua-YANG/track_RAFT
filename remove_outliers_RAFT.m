@@ -6,7 +6,7 @@ function tks2=remove_outliers_RAFT(tks,varargin)
 % nearby points. If these significantly differ - either by 3 standard
 % deviations, or by a fixed amount - then the track is split at the point
 % where the deviation happens.
-% If you find this useful please consider citing DOI: 10.5281/zenodo.4884065
+% If you found this helpful, please do cite DOI: 10.5281/zenodo.4884065
 % INPUT
 % tks is the output of track_RAFT
 % OPTIONS:
